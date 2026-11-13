@@ -1,39 +1,57 @@
-<!-- كارت الهودي الأسود بتنسيق الموقع الأصلي -->
-<div class="product-card" id="product-black" style="width: 100%; max-width: 480px; margin: 40px auto; text-align: left;">
-    <div class="product-image" style="height: 460px; background: #e2edc5; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img id="black-product-img" src="black-front.png" alt="Faith Over Fear Hoodie - Black" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-    </div>
-    
-    <!-- معلومات المنتج والأسعار -->
-    <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: baseline;">
-        <div>
-            <h3 style="font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px;">Faith Over Fear Hoodie</h3>
-            <p style="font-size: 12px; color: var(--muted);">Black - Graphic Hoodie</p>
+<!-- كارت الهودي الأسود بالامتداد الصحيح .jpg -->
+<div style="display: flex; justify-content: center; padding: 40px 20px;">
+    <div class="product-card" id="product-black" style="width: 100%; max-width: 380px; background: #fff; border: 1px solid #e5e5e5; padding: 16px; text-align: left;">
+        
+        <!-- صندوق الصورة -->
+        <div style="width: 100%; height: 420px; background: #f9f9f9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <img id="black-product-img" src="black-front designed.jpg" alt="Faith Over Fear Hoodie - Black" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
-        <div style="font-size: 14px; font-weight: 600; color: var(--ink);">650 EGP</div>
-    </div>
+        
+        <!-- معلومات المنتج والسعر -->
+        <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <h3 style="font-size: 15px; font-weight: 600; color: #111; margin-bottom: 4px;">Faith Over Fear Hoodie</h3>
+                <p style="font-size: 13px; color: #666;">Black - Graphic Hoodie</p>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; color: #111;">650 EGP</div>
+        </div>
 
-    <!-- أزرار الوش والظهر -->
-    <div class="view-switcher" style="display: flex; gap: 8px; margin-top: 12px;">
-        <button class="view-btn active" onclick="switchBlackView('front', this)" style="background: var(--ink); color: var(--white); border: 1px solid var(--ink); padding: 8px 16px; font-size: 11px; cursor: pointer; text-transform: uppercase;">Front</button>
-        <button class="view-btn" onclick="switchBlackView('back', this)" style="background: #f1f3f5; color: var(--ink); border: 1px solid var(--line); padding: 8px 16px; font-size: 11px; cursor: pointer; text-transform: uppercase;">Back</button>
+        <!-- أزرار الوش والظهر -->
+        <div style="display: flex; gap: 8px; margin-top: 14px;">
+            <button id="btn-front" onclick="switchBlackView('front', this)" style="flex: 1; background: #111; color: #fff; border: 1px solid #111; padding: 10px; font-size: 12px; cursor: pointer; font-weight: 500; text-transform: uppercase;">Front</button>
+            <button id="btn-back" onclick="switchBlackView('back', this)" style="flex: 1; background: #f1f3f5; color: #333; border: 1px solid #dee2e6; padding: 10px; font-size: 12px; cursor: pointer; font-weight: 500; text-transform: uppercase;">Back</button>
+        </div>
+
+        <!-- زر الشراء -->
+        <button style="width: 100%; margin-top: 10px; background: #111; color: #fff; border: none; padding: 12px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">Add to Cart</button>
     </div>
 </div>
 
-<!-- جافاسكريبت لتبديل الصور -->
+<!-- جافاسكريبت لتبديل الصور للـ .jpg -->
 <script>
     function switchBlackView(view, buttonElement) {
-        let imgPath = `black-${view}.png`;
-        document.getElementById('black-product-img').src = imgPath;
+        let imgName = (view === 'front') ? 'black-front designed.jpg' : 'black-back designed.jpg';
+        document.getElementById('black-product-img').src = imgName;
 
-        let card = document.getElementById('product-black');
-        card.querySelectorAll('.view-btn').forEach(btn => {
-            btn.style.background = '#f1f3f5';
-            btn.style.color = 'var(--ink)';
-            btn.style.borderColor = 'var(--line)';
-        });
-        buttonElement.style.background = 'var(--ink)';
-        buttonElement.style.color = 'var(--white)';
-        buttonElement.style.borderColor = 'var(--ink)';
+        let btnFront = document.getElementById('btn-front');
+        let btnBack = document.getElementById('btn-back');
+
+        if(view === 'front') {
+            btnFront.style.background = '#111';
+            btnFront.style.color = '#fff';
+            btnFront.style.borderColor = '#111';
+
+            btnBack.style.background = '#f1f3f5';
+            btnBack.style.color = '#333';
+            btnBack.style.borderColor = '#dee2e6';
+        } else {
+            btnBack.style.background = '#111';
+            btnBack.style.color = '#fff';
+            btnBack.style.borderColor = '#111';
+
+            btnFront.style.background = '#f1f3f5';
+            btnFront.style.color = '#333';
+            btnFront.style.borderColor = '#dee2e6';
+        }
     }
 </script>

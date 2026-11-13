@@ -1,135 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f4f1eb">
-  <title>districtO1 — Everyday, Elevated.</title>
-  <meta name="description" content="districtO1 — considered essentials and modern everyday wear.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--paper:#f4f1eb;--ink:#1e211d;--muted:#77776f;--line:#d9d4ca;--olive:#777b61;--white:#fff}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
-    a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
-    .topline{background:var(--ink);color:#f4f1eb;text-align:center;padding:9px 16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
-    header{height:76px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(244,241,235,.94);backdrop-filter:blur(12px);z-index:5}
-    .logo{font-weight:700;letter-spacing:.16em;font-size:19px}.logo span{font-weight:400;color:var(--olive)}
-    nav{display:flex;gap:32px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#55564f}
-    .bag{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-    .hero{min-height:590px;display:grid;grid-template-columns:1.02fr .98fr;padding:36px 6vw 56px;gap:5vw;align-items:center}
-    .eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);font-weight:700}
-    h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(54px,7vw,94px);line-height:.98;letter-spacing:-.045em;margin:23px 0}
-    .hero-copy{max-width:390px;color:#696a62;line-height:1.9;font-size:14px}
-    .actions{display:flex;align-items:center;gap:22px;margin-top:34px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:white;padding:16px 24px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--ink);transition:.2s}
-    .btn:hover{background:transparent;color:var(--ink)}.text-link{font-size:10px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:5px}
-    .hero-image{height:500px;position:relative;overflow:hidden;background:#d7d0c4}
-    .hero-image img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72)}
-    .image-note{position:absolute;bottom:18px;left:18px;background:rgba(244,241,235,.9);padding:10px 13px;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
-    .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 6vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#77776f;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
-    section{padding:88px 6vw}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:34px}
-    h2{font-family:"Playfair Display",serif;font-size:clamp(36px,4vw,54px);font-weight:500;letter-spacing:-.03em;margin:10px 0 0}
-    .section-sub{font-size:12px;color:var(--muted);max-width:260px;line-height:1.7}
-    
-    /* تعديل عرض المنتجات لتظهر قطعة واحدة في المنتصف بشكل أنيق ومتوازن */
-    .products{display:flex;justify-content:center;max-width:480px;margin:0 auto}
-    .product-card{width:100%}
-    .product-image{height:460px;background:#e2ded5;position:relative;overflow:hidden}
-    .product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;filter:saturate(.72)}
-    .product-card:hover img{transform:scale(1.04)}
-    .tag{position:absolute;top:14px;left:14px;background:var(--paper);padding:8px 10px;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
-    .product-info{display:flex;justify-content:space-between;gap:12px;padding:15px 0 0;font-size:12px}
-    .product-info small{display:block;color:var(--muted);margin-top:6px;font-size:10px}
-    .price{white-space:nowrap;font-weight:600}
-
-    .story{background:#e8e4db;display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center}
-    .story img{width:100%;height:420px;object-fit:cover;filter:saturate(.65)}
-    .story p{font-size:13px;line-height:2;color:#66675f;max-width:420px}
-    .story h2{max-width:440px}
-    .newsletter{text-align:center;padding-top:92px;padding-bottom:92px}
-    .newsletter p{color:var(--muted);font-size:12px;line-height:1.8}
-    .newsletter-form{display:flex;max-width:430px;margin:25px auto 0;border-bottom:1px solid var(--ink)}
-    .newsletter-form input{flex:1;min-width:0;border:0;background:transparent;padding:14px 4px;outline:none;font:inherit;font-size:11px}
-    .newsletter-form button{border:0;background:transparent;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-    footer{background:var(--ink);color:#f4f1eb;padding:40px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-    footer .logo{font-size:17px}footer p{font-size:10px;color:#b8b6ad;letter-spacing:.08em}
-    .wa{position:fixed;right:22px;bottom:22px;background:#343a30;color:white;padding:14px 18px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;z-index:4;box-shadow:0 5px 20px #0002}
-    @media(max-width:760px){header{height:66px;padding:0 5vw}nav{gap:14px;font-size:9px}.bag{display:none}.hero{grid-template-columns:1fr;padding:38px 5vw 46px;gap:30px}.hero-image{height:390px;grid-row:1}.hero-copy{font-size:13px}.marquee{padding:15px 5vw;justify-content:center}.marquee span:nth-child(n+3){display:none}section{padding:64px 5vw}.section-head{display:block}.section-sub{margin-top:14px}.products{grid-template-columns:1fr}.product-image{height:360px}.product-info{font-size:11px}.story{grid-template-columns:1fr;gap:30px}.story img{height:330px}.newsletter{padding-top:65px;padding-bottom:65px}}
-  </style>
-</head>
-<body>
-  <div class="topline">A quieter kind of statement · New collection coming soon</div>
-  <header>
-    <a class="logo" href="#">district<span>O1</span></a>
-    <nav><a href="#shop">Shop</a><a href="#story">Our story</a><a href="#contact">Contact</a></nav>
-    <a class="bag" href="#shop">Explore collection ↗</a>
-  </header>
-  <main>
-    <section class="hero">
-      <div>
-        <div class="eyebrow">Designed for the everyday</div>
-        <h1>Less, but<br>better.</h1>
-        <p class="hero-copy">Thoughtful essentials. Clean silhouettes. A considered wardrobe made to move with you — wherever the day takes you.</p>
-        <div class="actions"><a class="btn" href="#shop">Discover the edit</a><a class="text-link" href="#story">Our philosophy</a></div>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Minimal contemporary fashion editorial">
-        <div class="image-note">districtO1 / collection 001</div>
-      </div>
-    </section>
-    <div class="marquee"><span>Considered essentials</span><span>Made for every day</span><span>Quiet confidence</span><span>districtO1 — 001</span></div>
-    <section id="shop">
-      <div class="section-head"><div><div class="eyebrow">The collection</div><h2>Everyday uniform.</h2></div><p class="section-sub">A first look at the pieces that make getting dressed feel effortless.</p></div>
-      <div class="products">
-        <article class="product-card">
-          <div class="product-image">
-            <img src="hoodie-product.png" alt="districtO1 burgundy graphic sweatshirt">
-            <span class="tag">Available now</span>
-          </div>
-          <div class="product-info">
-            <div>Find Peace Sweatshirt<small>Burgundy · Graphic crewneck</small></div>
-            <div class="price">EGP 750</div>
-          </div>
-        </article>
-      </div>
-      <p style="font-size:10px;color:#85847b;margin-top:22px;text-align:center;">* Demo products and prices — replace with your real stock before publishing.</p>
-    </section>
-    <section class="story" id="story">
-      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=85" alt="Modern minimal fashion styling">
-      <div><div class="eyebrow">The districtO1 approach</div><h2>Good design speaks softly.</h2><p>We believe the best pieces don't need to shout. districtO1 is built around clean design, thoughtful details, and versatile pieces you can make your own.</p><a class="text-link" href="#contact">Get in touch</a></div>
-    </section>
-    <section class="newsletter" id="contact">
-      <div class="eyebrow">Stay in the loop</div><h2>Something good is coming.</h2><p>Follow the journey and be first to hear about new drops.</p>
-      <div class="newsletter-form"><input type="email" placeholder="Your email address" aria-label="Your email address"><button type="button" onclick="alert('Thanks! Connect this form to an email service before launch.')">Join us ↗</button></div>
-    </section>
-  </main>
-  <footer><a class="logo" href="#">district<span>O1</span></a><p>© 2026 districtO1. All rights reserved.</p><p>Designed with intention.</p></footer>
-  <a class="wa" id="whatsapp" href="https://wa.me/201143761413?text=Hello%20districtO1%2C%20I%27m%20interested%20in%20your%20collection." target="_blank" rel="noopener">Order via WhatsApp ↗</a>
-<!-- قسم كارت الهودي الأسود -->
-<section style="padding: 60px 6vw; display: flex; justify-content: center; background: var(--paper);">
-    <div class="product-card" id="product-black" style="width: 320px; background: #fff; border: 1px solid var(--line); padding: 16px; text-align: left;">
-        <div class="product-image-container" style="width: 100%; height: 400px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <img id="black-product-img" src="black-front.png" alt="District01 Black Hoodie" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-
-        <div class="product-info" style="padding-top: 12px;">
-            <h3 class="product-title" style="font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--ink);">Faith Over Fear Hoodie - Black</h3>
-            <p class="product-price" style="font-size: 14px; color: var(--muted); margin-bottom: 12px;">650 EGP</p>
-
-            <!-- أزرار تبديل الوش والظهر -->
-            <div class="view-switcher" style="display: flex; gap: 8px; margin-bottom: 12px;">
-                <button class="view-btn active" onclick="switchBlackView('front', this)" style="background: var(--ink); color: var(--white); border: 1px solid var(--ink); padding: 6px 12px; font-size: 12px; cursor: pointer;">Front</button>
-                <button class="view-btn" onclick="switchBlackView('back', this)" style="background: #f1f3f5; color: var(--ink); border: 1px solid var(--line); padding: 6px 12px; font-size: 12px; cursor: pointer;">Back</button>
-            </div>
-
-            <button class="buy-btn" style="width: 100%; background: var(--ink); color: var(--white); border: none; padding: 12px; font-size: 14px; cursor: pointer;">Add to Cart</button>
-        </div>
+<!-- كارت الهودي الأسود بتنسيق الموقع الأصلي -->
+<div class="product-card" id="product-black" style="width: 100%; max-width: 480px; margin: 40px auto; text-align: left;">
+    <div class="product-image" style="height: 460px; background: #e2edc5; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <img id="black-product-img" src="black-front.png" alt="Faith Over Fear Hoodie - Black" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
-</section>
+    
+    <!-- معلومات المنتج والأسعار -->
+    <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div>
+            <h3 style="font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px;">Faith Over Fear Hoodie</h3>
+            <p style="font-size: 12px; color: var(--muted);">Black - Graphic Hoodie</p>
+        </div>
+        <div style="font-size: 14px; font-weight: 600; color: var(--ink);">650 EGP</div>
+    </div>
 
-<!-- كود التشغيل للزراير -->
+    <!-- أزرار الوش والظهر -->
+    <div class="view-switcher" style="display: flex; gap: 8px; margin-top: 12px;">
+        <button class="view-btn active" onclick="switchBlackView('front', this)" style="background: var(--ink); color: var(--white); border: 1px solid var(--ink); padding: 8px 16px; font-size: 11px; cursor: pointer; text-transform: uppercase;">Front</button>
+        <button class="view-btn" onclick="switchBlackView('back', this)" style="background: #f1f3f5; color: var(--ink); border: 1px solid var(--line); padding: 8px 16px; font-size: 11px; cursor: pointer; text-transform: uppercase;">Back</button>
+    </div>
+</div>
+
+<!-- جافاسكريبت لتبديل الصور -->
 <script>
     function switchBlackView(view, buttonElement) {
         let imgPath = `black-${view}.png`;
@@ -146,5 +37,3 @@
         buttonElement.style.borderColor = 'var(--ink)';
     }
 </script>
-</body>
-</html>
